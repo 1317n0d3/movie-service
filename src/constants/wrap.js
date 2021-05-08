@@ -1,0 +1,1 @@
+export const WRAP = document.querySelector('.wrap');

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movies database</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <button id="btnShowForm">Панель добавления фильмов</button>
+    <button id="btnShowFilms">Фильмы</button>
+  </header>
+  <aside>
+    <select name="m_act[country]" id="filterCountry">
+      <option value="default">Страна</option>
+    </select>
+    <select name="m_act[genre]" id="filterGenre">
+      <option value="default">Жанр</option>
+    </select>
+    <select name="m_act[date]" id="filterDate">
+      <option value="default">Дата релиза</option>
+      <option value="newest">Сначала новое</option>
+      <option value="oldest">Сначала старое</option>
+      </select>
+  </aside>
+  <main>
+    <div class="add-film-form invisible">
+      <form>
+        <input type="text" name="" id="title" placeholder="Название">
+        <input type="text" name="" id="country" placeholder="Страна">
+        <input type="text" name="" id="genre" placeholder="Жанр">
+        <input type="text" name="" id="director" placeholder="Режиссер">
+        <input type="text" name="" id="filmScript" placeholder="Сценарий">
+        <input type="text" name="" id="producer" placeholder="Продюсер">
+        <input type="text" name="" id="operator" placeholder="Оператор">
+        <input type="text" name="" id="composer" placeholder="Композитор">
+        <input type="text" name="" id="budget" placeholder="Бюджет">
+        <input type="text" name="" id="worldFees" placeholder="Мировые сборы">
+        <input type="text" name="" id="ageRating" placeholder="Возрастной рейтинг">
+        <input type="text" name="" id="duration" placeholder="Длительность">
+        <input type="date" name="" id="releaseDate" placeholder="Дата выхода">
+        <input type="text" name="" id="poster" placeholder="Постер">
+        <input type="button" id="btnAddFilm" value="Добавить фильм">
+      </form>
+    </div>
+    <div class="wrap"></div>
+    <div class="film-info">
+      <div class="film-info__main">
+        <div class="film-info__main__description">
+          <img src="https://mimicosmetic.ru/wp-content/uploads/woocommerce-placeholder.png" alt="image: film poster">
+          <p>Название: </p>
+          <p>Страна: </p>
+          <p>Жанр: </p>
+          <p>Режиссер: </p>
+          <p>Продюсер: </p>
+          <p>Оператор: </p>
+          <p>Композитор: </p>
+          <p>Бюджет: </p>
+          <p>Мировые сборы: </p>
+          <p>Возрастной рейтинг: </p>
+          <p>Длительность: </p>
+          <p>Премьера: </p>
+        </div>
+        <div class="film-info__main__title">
+          <h2>Название</h2>
+          <p>Сценарий</p>
+        </div>
+      </div>
+      <div class="film-info__comments">
+        <h2>Комментарии</h2>
+      </div>
+    </div>
+  </main>
+  <script src="dist/main.js"></script>
+</body>
+</html>
