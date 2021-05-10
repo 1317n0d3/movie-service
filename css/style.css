@@ -152,8 +152,7 @@ aside select {
   display: flex;
 }
 
-.film-info__main__description,
-.film-info__comments {
+.film-info__main__description {
   margin: 0 40px;
 }
 
@@ -167,6 +166,32 @@ aside select {
 
 .film-info__main__title {
   width: 800px;
+}
+
+iframe {
+  margin: 50px;
+}
+
+.film-info__comments__form {
+  display: flex;
+}
+
+.film-info__comments__form input[type="text"],
+.film-info__comments__form input[type="button"] {
+  display: block;
+  margin: 10px 0px;
+  width: 600px;
+  background-color: #151a1f;
+  color: #fff;
+}
+
+.film-info__comments__form input[type="button"] {
+  width: 614px;
+}
+
+input[type="range"] {
+  color: #fff;
+  transform: rotate(-90deg);
 }
 
 .log {

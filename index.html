@@ -81,10 +81,41 @@
         <div class="film-info__main__title">
           <h2>Название</h2>
           <p>Сценарий</p>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/-V0ARqmnzSk" title="YouTube video player"
+            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+          <div class="film-info__comments">
+            <form class="film-info__comments__form">
+              <div class="comment-text">
+                <input type="text" class="comment-text" placeholder="Отзыв">
+                <input type="button" value="Оставить отзыв">
+              </div>
+              <div class="comment-rating">
+                <input type="range" list="tickmarks" min="0" max="10" step="1" value="7">
+                <datalist id="tickmarks">
+                  <option value="0" label="0"></option>
+                  <option value="1"></option>
+                  <option value="2"></option>
+                  <option value="3"></option>
+                  <option value="4"></option>
+                  <option value="5" label="5"></option>
+                  <option value="6"></option>
+                  <option value="7"></option>
+                  <option value="8"></option>
+                  <option value="9"></option>
+                  <option value="10" label="10"></option>
+                </datalist>
+              </div>
+            </form>
+            <h2>Комментарии</h2>
+            <div class="film-comments" id="filmComments">
+              <div class="film-comment" id="uniq">
+                <span>Имя - профессия - рейтинг</span>
+                <span style="display: block;">Текст</span>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="film-info__comments">
-        <h2>Комментарии</h2>
       </div>
     </div>
   </main>
