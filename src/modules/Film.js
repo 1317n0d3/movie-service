@@ -1,4 +1,5 @@
 import { WRAP } from "../constants/wrap";
+import CommentList from "../modules/CommentList";
 
 class Film{
   constructor(id, title, country, genre, director, filmScript, producer, operator,
@@ -18,6 +19,7 @@ class Film{
     this.duration = duration;
     this.releaseDate = releaseDate;
     this.poster = poster;
+    this.commentList = new CommentList(id);
   }
 
   // Прорисовка фильма
