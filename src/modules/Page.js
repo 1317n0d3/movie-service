@@ -6,6 +6,7 @@ class Page{
   constructor(wrap){
     this.filmList = new FilmList();
     this.filter = new Filter();
+    this.user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : {};
     this.wrap = wrap;
     wrap.onclick = this.onClick.bind(this);
   }
@@ -103,16 +104,73 @@ class Page{
   }
 
   render(){
+    this.initUserInfo();
     this.filter.updateFilterData(this.filmList);
     this.filmList.render();
   }
 
+  initUserInfo(){
+    if(localStorage.getItem('user')){
+      userLogin.textContent = this.user.inputLogin;
+
+      userLogin.classList.remove('invisible');
+      imgLogOut.classList.remove('invisible');
+      registrationForm.classList.add('invisible');
+      logIn.classList.add('invisible');
+    }
+  }
+
+  registration(){
+    const user = {
+      inputLogin: document.querySelector('#inputLogin').value,
+      inputProfession: document.querySelector('#inputProfession').value
+    }
+
+    localStorage.setItem('user', JSON.stringify(user));
+    this.user = JSON.parse(localStorage.getItem('user'));
+  }
+
   initEventListeners(){
-    const btnShowForm = document.querySelector('#btnShowForm');
-    const btnShowFilms = document.querySelector('#btnShowFilms');
-    const filmInfo = document.querySelector('.film-info');
-    const addFilmForm = document.querySelector('.add-film-form');
-    const btnAddFilm = document.querySelector('#btnAddFilm');
+  //-------------------------------------------------------------------
+  // Registration -----------------------------------------------------
+  //-------------------------------------------------------------------
+
+    const logIn = document.querySelector('#logIn'),
+      registrationForm = document.querySelector('#registrationForm'),
+      btnRegistration = document.querySelector('#btnRegistration'),
+      imgLogOut = document.querySelector('#imgLogOut'),
+      userLogin = document.querySelector('#userLogin');
+
+    logIn.addEventListener('click', () => {
+      registrationForm.classList.toggle('invisible');
+    });
+
+    registrationForm.addEventListener('mouseleave', () => {
+      registrationForm.classList.add('invisible');
+    });
+
+    btnRegistration.addEventListener('click', () => {
+      this.registration();
+      this.initUserInfo();
+    });
+
+    imgLogOut.addEventListener('click', () => {
+      localStorage.removeItem('user');
+
+      userLogin.classList.add('invisible');
+      imgLogOut.classList.add('invisible');
+      logIn.classList.remove('invisible');
+    });
+
+  //-------------------------------------------------------------------
+  // Film controls ----------------------------------------------------
+  //-------------------------------------------------------------------
+
+    const btnShowForm = document.querySelector('#btnShowForm'),
+      btnShowFilms = document.querySelector('#btnShowFilms'),
+      filmInfo = document.querySelector('.film-info'),
+      addFilmForm = document.querySelector('.add-film-form'),
+      btnAddFilm = document.querySelector('#btnAddFilm');
 
     btnShowFilms.addEventListener('click', () => {
       filmInfo.style.display = 'none';
@@ -128,14 +186,13 @@ class Page{
     });
 
     
-    
   //-------------------------------------------------------------------
   // Filter events ----------------------------------------------------
   //-------------------------------------------------------------------
 
-    const filterCountry = document.querySelector('#filterCountry');
-    const filterGenre = document.querySelector('#filterGenre');
-    const filterDate = document.querySelector('#filterDate');
+    const filterCountry = document.querySelector('#filterCountry'),
+      filterGenre = document.querySelector('#filterGenre'),
+      filterDate = document.querySelector('#filterDate');
 
     filterCountry.addEventListener('change', (event) => {
       this.filter.sortByCountry(this.filmList, event.target.value);

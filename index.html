@@ -17,7 +17,7 @@
     <div class="log">
       <button id="logIn">Log In</button>
       <span class="user-login invisible" id="userLogin">login</span>
-      <img src="/assets/icons/on-off-button.svg" class="invisible" alt="icon: log out button">
+      <img src="/assets/icons/on-off-button.svg" class="invisible" id="imgLogOut" alt="icon: log out button">
     </div>
   </header>
   <aside>
@@ -34,10 +34,10 @@
       </select>
   </aside>
   <main>
-    <div class="registration-form invisible">
+    <div class="registration-form invisible" id="registrationForm">
       <form>
-        <input type="text" placeholder="Логин">
-        <input type="text" placeholder="Профессия">
+        <input type="text" id="inputLogin" placeholder="Логин">
+        <input type="text" id="inputProfession" placeholder="Профессия">
         <input type="button" id="btnRegistration" value="Войти">
       </form>
     </div>
