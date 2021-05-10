@@ -108,13 +108,6 @@ class Page{
   }
 
   initEventListeners(){
-    const signIn = document.querySelector('#signIn');
-
-    // signIn.addEventListener('click', () => {});
-    // TODO: registration, pop-up modal window
-
-
-
     const btnShowForm = document.querySelector('#btnShowForm');
     const btnShowFilms = document.querySelector('#btnShowFilms');
     const filmInfo = document.querySelector('.film-info');
