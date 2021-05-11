@@ -225,6 +225,7 @@ input[type="range"] {
   padding: 7px 20px;
   background-color: #151a1f;
   border-radius: 5px;
+  z-index: 1;
 }
 
 .registration-form input {

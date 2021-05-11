@@ -8,6 +8,13 @@ class Comment{
   }
 
   renderComment(filmWrap){
-    filmWrap.innerHTML = `hello`;
+    filmWrap.innerHTML += `
+      <div class="film-comment" id="${this.filmIndex + this.name}">
+        <span>${this.name} - ${this.profession} - ${this.filmRating}</span>
+        <span style="display: block;">${this.text}</span>
+      </div>
+    `;
   }
 }
+
+export default Comment;

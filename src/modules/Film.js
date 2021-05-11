@@ -1,4 +1,5 @@
 import { WRAP } from "../constants/wrap";
+import Comment from "./Comment";
 
 class Film{
   constructor(id, title, country, genre, director, filmScript, producer, operator,
@@ -18,6 +19,7 @@ class Film{
     this.duration = duration;
     this.releaseDate = releaseDate;
     this.poster = poster;
+    this.comments = [];
   }
 
   // Прорисовка фильма
@@ -38,6 +40,40 @@ class Film{
         </div>
       </div>
     `;
+  }
+
+  addEventOnFilmInfo(){
+    const addComment = document.querySelector('#addComment');
+
+    if(addComment) addComment.addEventListener('click', () => {
+      this.getNewComment();
+      
+      console.log('add event');
+    });
+  }
+
+  getNewComment(){
+    const filmIndex = this.id,
+      name = JSON.parse(localStorage.getItem('user')).inputLogin,
+      profession = JSON.parse(localStorage.getItem('user')).inputProfession,
+      commentText = document.querySelector('#commentText').value,
+      filmRating = document.querySelector('#filmRating').value;
+
+    this.comments.push(new Comment(filmIndex, name, profession, commentText, filmRating));
+    console.log('push comment');
+    this.renderComments();
+  }
+
+  renderComments(){
+    const filmCommentsWrap = document.querySelector('#filmComments');
+    console.log('render comments');
+    console.log(this.comments);
+
+    filmCommentsWrap.innerHTML = ``;
+    this.comments.forEach((item) => {
+      item.renderComment(filmCommentsWrap);
+      console.log(item);
+    });
   }
 
   renderFilmInfo(wrapper){
@@ -69,11 +105,11 @@ class Film{
           <div class="film-info__comments">
             <form class="film-info__comments__form">
               <div class="comment-text">
-                <input type="text" class="comment-text" placeholder="Отзыв">
-                <input type="button" value="Оставить отзыв">
+                <input type="text" class="comment-text" id="commentText" placeholder="Отзыв">
+                <input type="button" id="addComment" value="Оставить отзыв">
               </div>
               <div class="comment-rating">
-                <input type="range" list="tickmarks" min="0" max="10" step="1" value="7">
+                <input type="range" id="filmRating" list="tickmarks" min="0" max="10" step="1" value="7">
                 <datalist id="tickmarks">
                   <option value="0" label="0"></option>
                   <option value="1"></option>
@@ -91,15 +127,13 @@ class Film{
             </form>
             <h2>Комментарии</h2>
             <div class="film-comments" id="filmComments">
-              <div class="film-comment" id="uniq">
-                <span>Имя - профессия - рейтинг</span>
-                <span style="display: block;">Текст</span>
-              </div>
             </div>
           </div>
         </div>
       </div>
     `;
+    this.addEventOnFilmInfo();
+    this.renderComments();
   }
 }
 
