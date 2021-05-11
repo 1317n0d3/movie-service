@@ -19,7 +19,7 @@ class Film{
     this.duration = duration;
     this.releaseDate = releaseDate;
     this.poster = poster;
-    this.comments = [];
+    this.comments = this.loadComments();
   }
 
   // Прорисовка фильма
@@ -60,8 +60,24 @@ class Film{
       filmRating = document.querySelector('#filmRating').value;
 
     this.comments.push(new Comment(filmIndex, name, profession, commentText, filmRating));
+    this.saveComments();
     console.log('push comment');
     this.renderComments();
+  }
+
+  loadComments(){
+    const comments = [];
+    if(localStorage.getItem(this.id)) {
+      JSON.parse(localStorage.getItem(this.id)).forEach((item) => {
+        const {filmIndex, name, profession, text, filmRating} = item;
+        comments.push(new Comment(filmIndex, name, profession, text, filmRating));
+      });
+    }
+    return comments;
+  }
+
+  saveComments(){
+    localStorage.setItem(this.id, JSON.stringify(this.comments));
   }
 
   renderComments(){

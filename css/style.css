@@ -189,6 +189,19 @@ iframe {
   width: 614px;
 }
 
+.film-comment {
+  margin: 20px 0;
+}
+
+.user-comment-info {
+  color: #f18100;
+  font-size: 20px;
+}
+
+.user-comment-text {
+  font-weight: 200;
+}
+
 input[type="range"] {
   color: #fff;
   transform: rotate(-90deg);

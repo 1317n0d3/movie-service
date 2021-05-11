@@ -10,8 +10,8 @@ class Comment{
   renderComment(filmWrap){
     filmWrap.innerHTML += `
       <div class="film-comment" id="${this.filmIndex + this.name}">
-        <span>${this.name} - ${this.profession} - ${this.filmRating}</span>
-        <span style="display: block;">${this.text}</span>
+        <span class="user-comment-info">${this.name} - ${this.profession} - ${this.filmRating}</span>
+        <span class="user-comment-text" style="display: block;">${this.text}</span>
       </div>
     `;
   }
