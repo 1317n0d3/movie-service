@@ -47,8 +47,6 @@ class Film{
 
     if(addComment) addComment.addEventListener('click', () => {
       this.getNewComment();
-      
-      console.log('add event');
     });
   }
 
@@ -61,7 +59,6 @@ class Film{
 
     this.comments.push(new Comment(filmIndex, name, profession, commentText, filmRating));
     this.saveComments();
-    console.log('push comment');
     this.renderComments();
   }
 
@@ -82,13 +79,10 @@ class Film{
 
   renderComments(){
     const filmCommentsWrap = document.querySelector('#filmComments');
-    console.log('render comments');
-    console.log(this.comments);
 
     filmCommentsWrap.innerHTML = ``;
     this.comments.forEach((item) => {
       item.renderComment(filmCommentsWrap);
-      console.log(item);
     });
   }
 
