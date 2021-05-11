@@ -130,6 +130,20 @@ class Page{
     this.user = JSON.parse(localStorage.getItem('user'));
   }
 
+  setDefaultFilter(filter){
+      switch(filter){
+        case 'country':
+          document.querySelector('#filterCountry').value = 'default';
+          break;
+        case 'genre':
+          document.querySelector('#filterGenre').value = 'default';
+          break;
+        case 'date':
+          document.querySelector('#filterDate').value = 'default';
+          break;
+      }
+  }
+
   initEventListeners(){
   //-------------------------------------------------------------------
   // Registration -----------------------------------------------------
@@ -196,14 +210,20 @@ class Page{
 
     filterCountry.addEventListener('change', (event) => {
       this.filter.sortByCountry(this.filmList, event.target.value);
+      this.setDefaultFilter('genre');
+      this.setDefaultFilter('date');
     });
 
     filterGenre.addEventListener('change', (event) => {
       this.filter.sortByGenre(this.filmList, event.target.value);
+      this.setDefaultFilter('country');
+      this.setDefaultFilter('date');
     });
 
     filterDate.addEventListener('change', (event) => {
       this.filter.sortByNewest(this.filmList, event.target.value);
+      this.setDefaultFilter('country');
+      this.setDefaultFilter('genre');
     });
   //-------------------------------------------------------------------
   //-------------------------------------------------------------------
