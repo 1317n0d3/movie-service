@@ -28,10 +28,10 @@ class Film{
       <div class="wrap__item" data-index="${this.id}">
         <div class="wrap__item__context" id="contextMenu">
           <button id="btnViewFilm" data-action="view" data-index="${this.id}">
-            <img src="/assets/icons/view.svg" alt="icon: view film">
+            <img src="assets/icons/view.svg" alt="icon: view film">
           </button>
           <button id="btnDeleteFilm" data-action="delete" data-index="${this.id}">
-            <img src="/assets/icons/trash.svg" alt="icon: delete film">
+            <img src="assets/icons/trash.svg" alt="icon: delete film">
           </button>
         </div>
         <div class="wrap__item__content">
